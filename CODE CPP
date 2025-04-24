@@ -116,12 +116,12 @@ void editarCalen() {
 
 	mostrarCalen();
 
-	cout << "\nElija el número del calendario que quiere cambiar: ";
+	cout << "\nElija el numero del calendario que quiere cambiar: ";
 	cin >> edit;
 	cin.ignore();
 
 	if (edit < 1 || edit > calenFecha.size()) {
-		cout << "Número de evento invalido.\n";
+		cout << "Numero de evento invalido.\n";
 		return;
 	}
 
@@ -132,10 +132,10 @@ void editarCalen() {
 			break;
 		}
 		else {
-			cout << "Formato de fecha inválido. Intente de nuevo.\n";
+			cout << "Formato de fecha invalido. Intente de nuevo.\n";
 		}
 	}
-	cout << "Nueva descripción del evento: ";
+	cout << "Nueva descripcion del evento: ";
 	getline(cin, editDesc);
 
 	calenFecha[edit - 1] = editFecha;
@@ -143,7 +143,7 @@ void editarCalen() {
 
 	guardarCalen();
 
-	cout << "Evento actualizado con éxito.\n";
+	cout << "Evento actualizado con exito.\n";
 }
 
 // Realizado por Sebastian.
