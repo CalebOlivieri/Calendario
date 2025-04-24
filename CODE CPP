@@ -1,4 +1,4 @@
-//Creado por Caleb Olivieri y Sebastian Arroyo
+// Realizado por Caleb Olivieri y Sebastian Arroyo
 
 #include <iostream>
 #include <vector>
@@ -14,22 +14,21 @@ vector<string> calenFecha;
 vector<string> calenDesc;
 regex fechaRegex("^([0-2][0-9]|(3)[0-1])/(0[1-9]|1[0-2])/[0-9]{4}$");
 
-
+// Realizado por Sebastian.
 void agregarCalen() {
 	if (calenFecha.size() >= calendarios) {
 		cout << "Ya llegaste al maximo de calendarios que se puede agregar.\n";
 	}
 	else {
 		string desc, fecha;
-		regex fechaRegex("^([0-2][0-9]|(3)[0-1])/(0[1-9]|1[0-2])/[0-9]{4}$");  // Expresión regular para la fecha
+		regex fechaRegex("^([0-2][0-9]|(3)[0-1])/(0[1-9]|1[0-2])/[0-9]{4}$");  
 
 		while (true) {
 			cout << "\nFecha (DD/MM/AAAA): \n";
 			getline(cin, fecha);
 
-			// Validamos si la fecha cumple con el formato
 			if (regex_match(fecha, fechaRegex)) {
-				break; // La fecha es válida, salimos del bucle
+				break;
 			}
 			else {
 				cout << "La fecha no es valida. Por favor, usa el formato DD/MM/AAAA.\n";
@@ -42,7 +41,7 @@ void agregarCalen() {
 		calenDesc.push_back(desc);
 		calenFecha.push_back(fecha);
 
-		// Guardamos la fecha y descripción en el archivo
+		// Realizado por Caleb
 		ofstream MyFile("Calendario.txt", ios::app);
 		if (MyFile.is_open()) {
 			MyFile << fecha << " | " << desc << "\n";
@@ -50,7 +49,7 @@ void agregarCalen() {
 		}
 	}
 }
-
+// Realizado por Caleb
 void cargarCalen() {
 	string lectorLinea;
 	ifstream MyReadFile("Calendario.txt");
@@ -70,7 +69,7 @@ void cargarCalen() {
 
 	MyReadFile.close();
 }
-
+// Realizado por Caleb
 	void mostrarCalen() {
 		if (calenFecha.empty()) {
 			cout << "\nNo hay eventos registrados";
@@ -83,7 +82,7 @@ void cargarCalen() {
 			}
 		}
 	}
-
+	// Realizado por Caleb
 	void guardarCalen() {
 		ofstream fileUpdate("Calendario.txt");
 		for (int i = 0; i < calenFecha.size(); i++) {
@@ -109,7 +108,8 @@ void cargarCalen() {
 		}
 	}
 	// Aqui termina el fragmento
-
+	
+	// Realizado por Sebastian.
 	void editarCalen() {
 		int edit;
 		string editDesc, editFecha;
@@ -146,7 +146,7 @@ void cargarCalen() {
 		cout << "Evento actualizado con éxito.\n";
 	}
 
-
+	// Realizado por Sebastian.
 	int main() {
 		int menu;
 		cargarCalen();
