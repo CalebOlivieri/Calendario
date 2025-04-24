@@ -1,0 +1,8 @@
+Version 1.0
+Primera Version del codigo, no tenia bucles y solamente podias añadir un calendario
+
+Version 1.1
+Se añade bucles para poder seguir intentando y se aumenta la capacidad de calendarios a 10
+
+Version 1.2 (Latest)
+Se añade funcion para verificar que se ponga la fecha en el formato correcto. 
