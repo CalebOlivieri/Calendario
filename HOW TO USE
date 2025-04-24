@@ -1,0 +1,23 @@
+Cuando compilas el codigo te va a salir un menu que te va a pedir 5 opciones
+1. Agregas un Calendario
+2. Ver los calendarios ya creados
+3. Eliminar
+4. Editar
+5. Salir
+
+
+  1. Agregar calendario
+Te va a pedir la fecha, obligatoriamente tienes que ponerlo en formato DD/MM/AAA si no es ingresado asi saldra error y tendras que volver a intentarlo.
+Luego te va a pedir una descripción.
+
+  2. Ver los calendarios
+Al elegir esta opción mostrara todos los calendarios creados anteriormente.
+
+  3. Eliminar
+En esta opcion te saldra un menu que te mostrara los calendarios creados y te va a pedir cual de todos quieres eliminar.
+
+  4. Editar
+Aqui te saldra el mismo menu que en 'ELiminar' al elegir el calendario que quieres hacer cambios te va a pedir los mismos requisitos que en la primera opción.
+
+  5. Salir
+Al precionar el 5 el código deja de compilar.
