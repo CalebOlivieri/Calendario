@@ -8,7 +8,7 @@
 
 using namespace std;
 
-const int calendarios = 10; 
+const int calendarios = 10;
 
 vector<string> calenFecha;
 vector<string> calenDesc;
@@ -21,7 +21,7 @@ void agregarCalen() {
 	}
 	else {
 		string desc, fecha;
-		regex fechaRegex("^([0-2][0-9]|(3)[0-1])/(0[1-9]|1[0-2])/[0-9]{4}$");  
+		regex fechaRegex("^([0-2][0-9]|(3)[0-1])/(0[1-9]|1[0-2])/[0-9]{4}$");
 
 		while (true) {
 			cout << "\nFecha (DD/MM/AAAA): \n";
@@ -70,121 +70,120 @@ void cargarCalen() {
 	MyReadFile.close();
 }
 // Realizado por Caleb
-	void mostrarCalen() {
-		if (calenFecha.empty()) {
-			cout << "\nNo hay eventos registrados";
-		}
-		else {
-			cout << "Calendarios: \n";
-			for (int i = 0; i < calenFecha.size(); ++i) {
+void mostrarCalen() {
+	if (calenFecha.empty()) {
+		cout << "\nNo hay eventos registrados";
+	}
+	else {
+		cout << "Calendarios: \n";
+		for (int i = 0; i < calenFecha.size(); ++i) {
 
-				cout << "#" << i + 1 << "\nFecha: " << calenFecha[i] << "\n" << calenDesc[i] << "\n";
-			}
+			cout << "#" << i + 1 << "\nFecha: " << calenFecha[i] << "\n" << calenDesc[i] << "\n";
 		}
 	}
-	// Realizado por Caleb
-	void guardarCalen() {
-		ofstream fileUpdate("Calendario.txt");
-		for (int i = 0; i < calenFecha.size(); i++) {
-			fileUpdate << calenFecha[i] << " | " << calenDesc[i] << "\n";
-		}
-		fileUpdate.close();
+}
+// Realizado por Caleb
+void guardarCalen() {
+	ofstream fileUpdate("Calendario.txt");
+	for (int i = 0; i < calenFecha.size(); i++) {
+		fileUpdate << calenFecha[i] << " | " << calenDesc[i] << "\n";
 	}
+	fileUpdate.close();
+}
 
 
-	void eliminarCalen() {
-		//Generado por ChatGPT
-		int indice;
-		mostrarCalen();
-		cout << "\nIngrese el numero del evento a eliminar: ";
-		cin >> indice;
+void eliminarCalen() {
+	//Generado por ChatGPT
+	int indice;
+	mostrarCalen();
+	cout << "\nIngrese el numero del evento a eliminar: ";
+	cin >> indice;
 
-		if (indice >= 1 && indice <= calenFecha.size()) {
-			calenFecha.erase(calenFecha.begin() + indice - 1);  // Eliminar la fecha
-			calenDesc.erase(calenDesc.begin() + indice - 1);  // Eliminar la descripción
-			cout << "Evento eliminado.\n";
-
-			guardarCalen();
-		}
-	}
-	// Aqui termina el fragmento
-	
-	// Realizado por Sebastian.
-	void editarCalen() {
-		int edit;
-		string editDesc, editFecha;
-
-		mostrarCalen();
-
-		cout << "\nElija el número del calendario que quiere cambiar: ";
-		cin >> edit;
-		cin.ignore();
-
-		if (edit < 1 || edit > calenFecha.size()) {
-			cout << "Número de evento invalido.\n";
-			return;
-		}
-
-		while (true) {
-			cout << "Nueva fecha (DD/MM/AAAA): ";
-			getline(cin, editFecha);
-			if (regex_match(editFecha, fechaRegex)) {
-				break;
-			}
-			else {
-				cout << "Formato de fecha inválido. Intente de nuevo.\n";
-			}
-		}
-		cout << "Nueva descripción del evento: ";
-		getline(cin, editDesc);
-
-		calenFecha[edit - 1] = editFecha;
-		calenDesc[edit - 1] = editDesc;
+	if (indice >= 1 && indice <= calenFecha.size()) {
+		calenFecha.erase(calenFecha.begin() + indice - 1);  // Eliminar la fecha
+		calenDesc.erase(calenDesc.begin() + indice - 1);  // Eliminar la descripción
+		cout << "Evento eliminado.\n";
 
 		guardarCalen();
+	}
+}
+// Aqui termina el fragmento
 
-		cout << "Evento actualizado con éxito.\n";
+// Realizado por Sebastian.
+void editarCalen() {
+	int edit;
+	string editDesc, editFecha;
+
+	mostrarCalen();
+
+	cout << "\nElija el número del calendario que quiere cambiar: ";
+	cin >> edit;
+	cin.ignore();
+
+	if (edit < 1 || edit > calenFecha.size()) {
+		cout << "Número de evento invalido.\n";
+		return;
 	}
 
-	// Realizado por Sebastian.
-	int main() {
-		int menu;
-		cargarCalen();
-
-		do {
-			cout << "\n ********** Calendario de Tareas ********** \n";
-			cout << "1. Agregar Calendario \n";
-			cout << "2. Ver Calendarios \n";
-			cout << "3. Eliminar Calendario \n";
-			cout << "4. Cambiar tarea o Fecha \n";
-			cout << "5. Salir \n";
-			cin >> menu;
-			cin.ignore();
-
-			switch (menu) {
-			case 1:
-				agregarCalen();
-				break;
-
-			case 2:
-				mostrarCalen();
-				break;
-
-			case 3:
-				eliminarCalen();
-				break;
-
-			case 4: 
-				editarCalen();
-				break;
-
-			case 5:
-				cout << "Gracias por usar nuestro programa!";
-
-			default:
-				cout << "Input Invalido";
-			}
-		} while (menu != 5);
-
-		return 0;
+	while (true) {
+		cout << "Nueva fecha (DD/MM/AAAA): ";
+		getline(cin, editFecha);
+		if (regex_match(editFecha, fechaRegex)) {
+			break;
+		}
+		else {
+			cout << "Formato de fecha inválido. Intente de nuevo.\n";
+		}
 	}
+	cout << "Nueva descripción del evento: ";
+	getline(cin, editDesc);
+
+	calenFecha[edit - 1] = editFecha;
+	calenDesc[edit - 1] = editDesc;
+
+	guardarCalen();
+
+	cout << "Evento actualizado con éxito.\n";
+}
+
+// Realizado por Sebastian.
+int main() {
+	int menu;
+
+	do {
+		cout << "\n ********** Calendario de Tareas ********** \n";
+		cout << "1. Agregar Calendario \n";
+		cout << "2. Ver Calendarios \n";
+		cout << "3. Eliminar Calendario \n";
+		cout << "4. Cambiar tarea o Fecha \n";
+		cout << "5. Salir \n";
+		cin >> menu;
+		cin.ignore();
+
+		switch (menu) {
+		case 1:
+			agregarCalen();
+			break;
+
+		case 2:
+			mostrarCalen();
+			break;
+
+		case 3:
+			eliminarCalen();
+			break;
+
+		case 4:
+			editarCalen();
+			break;
+
+		case 5:
+			cout << "Gracias por usar nuestro programa!";
+
+		default:
+			cout << "Input Invalido";
+		}
+	} while (menu != 5);
+
+	return 0;
+}
